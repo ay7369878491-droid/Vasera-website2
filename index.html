@@ -1,0 +1,113 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Vasera | Sirf Room Nahi, Apna Sa Ghar</title>
+  <meta name="description" content="Vasera is a premium room rental platform to find trusted, affordable homes across India." />  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">  <style>
+    * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins', sans-serif; }
+    body { background:#f4f6fb; color:#0f172a; }
+
+    header { position:sticky; top:0; z-index:100; background:rgba(255,255,255,0.95); backdrop-filter:blur(10px); padding:16px 20px; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #e5e7eb; flex-wrap:wrap; }
+    header h1 { font-size:26px; font-weight:700; color:#1e3a8a; letter-spacing:1px; }
+
+    nav { display:flex; flex-wrap:wrap; margin-top:6px; }
+    nav a { margin:6px 12px; text-decoration:none; font-weight:500; color:#334155; position:relative; }
+    nav a::after { content:''; position:absolute; width:0; height:2px; left:0; bottom:-4px; background:#2563eb; transition:0.3s; }
+    nav a:hover::after { width:100%; }
+
+    /* Hamburger menu for mobile */
+    .menu-toggle { display:none; flex-direction:column; cursor:pointer; }
+    .menu-toggle span { width:25px; height:3px; background:#1e40af; margin:4px 0; transition:0.3s; border-radius:2px; }
+
+    @media(max-width:768px) {
+      nav { display:none; flex-direction:column; width:100%; margin-top:10px; }
+      nav.active { display:flex; }
+      .menu-toggle { display:flex; }
+    }
+
+    .hero { padding:100px 20px; text-align:center; background:linear-gradient(135deg,#1e3a8a,#2563eb); color:white; border-radius:0 0 40px 40px; box-shadow:0 8px 30px rgba(0,0,0,0.2); }
+    .hero h2 { font-size:36px; font-weight:700; margin-bottom:18px; line-height:1.2; }
+    .hero p { font-size:17px; max-width:90%; margin:0 auto 35px; opacity:0.9; line-height:1.7; }
+    .hero button { background:white; color:#1e40af; border:none; padding:14px 32px; font-size:16px; font-weight:600; border-radius:999px; cursor:pointer; box-shadow:0 20px 40px rgba(0,0,0,0.25); transition:0.3s; }
+    .hero button:hover { transform:translateY(-3px); }
+
+    .features { padding:70px 20px; display:grid; grid-template-columns:1fr; gap:25px; }
+    @media(min-width:600px){ .features { grid-template-columns: repeat(2,1fr); gap:30px; } }
+    @media(min-width:900px){ .features { grid-template-columns: repeat(3,1fr); gap:35px; } }
+
+    .card { background:white; padding:30px 22px; border-radius:20px; box-shadow:0 25px 50px rgba(15,23,42,0.1); transition:0.3s; position:relative; overflow:hidden; }
+    .card::before { content:''; position:absolute; width:60px; height:60px; border-radius:50%; background:rgba(37,99,235,0.1); top:-20px; right:-20px; z-index:0; }
+    .card:hover { transform:translateY(-5px); box-shadow:0 30px 60px rgba(15,23,42,0.15); }
+    .card h3 { margin-bottom:12px; font-size:19px; color:#1e40af; position:relative; z-index:1; }
+    .card p { font-size:15px; line-height:1.7; color:#475569; position:relative; z-index:1; }
+
+    .cta { margin:80px 20px; background:linear-gradient(135deg,#0f172a,#1e293b); color:white; padding:60px 20px; border-radius:32px; text-align:center; box-shadow:0 20px 50px rgba(0,0,0,0.25); }
+    .cta h2 { font-size:30px; margin-bottom:15px; }
+    .cta p { font-size:16px; line-height:1.7; }
+    .cta button { margin-top:25px; background:#2563eb; color:white; border:none; padding:14px 32px; border-radius:999px; font-size:15px; font-weight:500; cursor:pointer; }
+
+    footer { background:#020617; color:#94a3b8; text-align:center; padding:25px; font-size:14px; }
+  </style></head>
+<body>  <header>
+    <h1>Vasera</h1>
+    <div class="menu-toggle" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <nav id="nav-menu">
+      <a href="#">Home</a>
+      <a href="#">Find Room</a>
+      <a href="#">List Room</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>  <section class="hero">
+    <h2>Sirf Room Nahi, Apna Sa Ghar</h2>
+    <p>Vasera ek premium room rental platform hai jahan verified owners aur genuine rooms milte hain — bina brokerage, bina tension.</p>
+    <button>Explore Rooms</button>
+  </section>  <section class="features">
+    <div class="card">
+      <h3>Room & PG Rental</h3>
+      <p>Single room, shared room, PG ya family stay — Vasera par har type ke verified rooms available hain.</p>
+    </div>
+    <div class="card">
+      <h3>Verified Owners</h3>
+      <p>Har owner aur property manual verification se guzarti hai taaki fraud aur tension se bacha ja sake.</p>
+    </div>
+    <div class="card">
+      <h3>No Brokerage</h3>
+      <p>Direct owner se connect karein, bina kisi broker ya extra charge ke.</p>
+    </div>
+    <div class="card">
+      <h3>Easy Room Listing</h3>
+      <p>Room owners easily apna room list kar sakte hain with photos, rent details aur location.</p>
+    </div>
+    <div class="card">
+      <h3>Local Area Search</h3>
+      <p>City, area, budget aur room type ke hisaab se smart search aur filter options.</p>
+    </div>
+    <div class="card">
+      <h3>Safe & Trusted Platform</h3>
+      <p>Secure platform jo tenants aur owners dono ke liye transparency aur trust ensure karta hai.</p>
+    </div>
+    <div class="card">
+      <h3>Featured Rooms</h3>
+      <p>Top-rated aur premium rooms ko highlight karte hain taaki tenants easily best choice select kar sakein.</p>
+    </div>
+    <div class="card">
+      <h3>Instant Chat Support</h3>
+      <p>Tenant ya owner kisi bhi query ke liye direct chat support use kar sakta hai real-time help ke liye.</p>
+    </div>
+  </section>  <section class="cta">
+    <h2>Apna Vasera Aaj Hi Dhoondhiye</h2>
+    <p>India bhar mein trusted rooms aur homes — ek simple platform par.</p>
+    <button>Get Started</button>
+  </section>  <footer>
+    © 2026 Vasera. Built with trust & care.
+  </footer>  <script>
+    function toggleMenu() {
+      const nav = document.getElementById('nav-menu');
+      nav.classList.toggle('active');
+    }
+  </script></body>
+</html>
