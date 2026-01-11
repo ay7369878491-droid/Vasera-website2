@@ -1,0 +1,72 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vasera Admin Panel</title>
+  <style>
+    body{font-family:Arial;background:#0f172a;color:#fff;margin:0}
+    header{padding:16px 20px;background:#020617;font-size:20px;font-weight:bold}
+    .container{padding:20px}
+    table{width:100%;border-collapse:collapse;margin-top:20px}
+    th,td{padding:12px;border-bottom:1px solid #1e293b;text-align:left}
+    th{color:#38bdf8}
+    button{padding:6px 12px;border:none;border-radius:6px;cursor:pointer}
+    .del{background:#ef4444;color:#fff}
+  </style>
+</head>
+<body>
+<header>Vasera – Admin Panel</header>
+<div class="container">
+  <h2>Leads (Contact Form Data)</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>City</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody id="leads"></tbody>
+  </table>
+</div><script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-app.js";
+  import { getFirestore, collection, getDocs, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyDe3AkcZAX0vFARVoaJ0uTf35_vH5bgZ6Q",
+    authDomain: "vasera-f9578.firebaseapp.com",
+    projectId: "vasera-f9578",
+    storageBucket: "vasera-f9578.firebasestorage.app",
+    messagingSenderId: "683053731170",
+    appId: "1:683053731170:web:42422d0d0214a6c88ff03b"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  const tbody = document.getElementById('leads');
+
+  async function loadLeads(){
+    const querySnapshot = await getDocs(collection(db, 'leads'));
+    querySnapshot.forEach(docSnap => {
+      const d = docSnap.data();
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td>${d.name || ''}</td>
+        <td>${d.phone || ''}</td>
+        <td>${d.city || ''}</td>
+        <td><button class="del" onclick="deleteLead('${docSnap.id}')">Delete</button></td>
+      `;
+      tbody.appendChild(tr);
+    });
+  }
+
+  window.deleteLead = async function(id){
+    await deleteDoc(doc(db, 'leads', id));
+    location.reload();
+  }
+
+  loadLeads();
+</script></body>
+</html>
