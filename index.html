@@ -119,4 +119,34 @@ function toggleMenu(){
 }
 function toggleTheme(){document.body.classList.toggle('light')}
 </script></body>
+  <script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-app.js";
+  import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyDe3AkcZAX0vFARVoaJ0uTf35_vH5bgZ6Q",
+    authDomain: "vasera-f9578.firebaseapp.com",
+    projectId: "vasera-f9578",
+    storageBucket: "vasera-f9578.firebasestorage.app",
+    messagingSenderId: "683053731170",
+    appId: "1:683053731170:web:42422d0d0214a6c88ff03b"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  window.saveData = async function () {
+    const name = document.getElementById("name").value;
+    const phone = document.getElementById("phone").value;
+    const city = document.getElementById("city").value;
+
+    await addDoc(collection(db, "leads"), {
+      name: name,
+      phone: phone,
+      city: city
+    });
+
+    alert("Form submit ho gaya!");
+  };
+  </script>
 </html>
